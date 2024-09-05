@@ -19,7 +19,8 @@ CREATE TABLE customers (
     age INT,
     phone_number BIGINT,
     password VARCHAR(255),
-    loyalty_level VARCHAR(50)
+    loyalty_level VARCHAR(50),
+    subscription_status ENUM('Regular', 'Premium') DEFAULT 'Regular'
 );
 
 -- 3. Products Table
@@ -55,6 +56,7 @@ CREATE TABLE orders (
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_amount DECIMAL(10, 2),
     order_status ENUM('Pending', 'Fulfilled', 'Anomaly', 'Returned', 'Cancelled'),
+    refund_initiated_at TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
 
