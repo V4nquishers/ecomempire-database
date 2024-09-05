@@ -54,7 +54,7 @@ CREATE TABLE orders (
     customer_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     total_amount DECIMAL(10, 2),
-    order_status ENUM('Pending', 'Fulfilled', 'Anomaly', 'Returned', 'Cancelled'),
+    order_status ENUM('Pending', 'Fulfilled', 'Anomaly', 'Returned', 'Cancelled') DEFAULT 'Fulfilled',
     refund_initiated_at TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
 );
