@@ -19,7 +19,7 @@ CREATE TABLE customers (
     age INT,
     phone_number BIGINT,
     password VARCHAR(255),
-    loyalty_level VARCHAR(50),
+    loyalty_level ENUM('Gold','Silver','Bronze') DEFAULT 'Bronze',
     subscription_status ENUM('Regular', 'Premium') DEFAULT 'Regular'
 );
 
