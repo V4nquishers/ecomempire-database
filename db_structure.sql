@@ -51,12 +51,12 @@ create table ordered_products(
 );
 
 CREATE TABLE cart (
-    order_id INT,
+    customer_id INT,
     product_id INT,
     quantity INT,
     price DECIMAL(10, 2),
-    PRIMARY KEY (order_id,product_id),
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    PRIMARY KEY (customer_id,product_id),
+    FOREIGN KEY (customer_id) REFERENCES customer_id(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
