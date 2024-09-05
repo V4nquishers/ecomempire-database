@@ -32,7 +32,6 @@ CREATE TABLE products (
     image_url VARCHAR(255),
     description TEXT,
     specifications TEXT,
-    stock INT,
     location VARCHAR(255),
     restock_date DATE,
     category VARCHAR(255),
