@@ -34,6 +34,8 @@ CREATE TABLE products (
     stock INT,
     location VARCHAR(255),
     restock_date DATE,
+    category VARCHAR(255),
+    refundable BOOLEAN DEFAULT FALSE,
     manufacturer VARCHAR(255)
 );
 
