@@ -31,25 +31,19 @@ CREATE TABLE products (
     image_url VARCHAR(255),
     description TEXT,
     specifications TEXT,
-    manufacturer VARCHAR(255)
-);
-
--- 4. Inventory Table (Product stock and details)
-CREATE TABLE inventory (
-    product_id INT PRIMARY KEY,
     stock INT,
     location VARCHAR(255),
     restock_date DATE,
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    manufacturer VARCHAR(255)
 );
 
--- 5. Supplies Table (Link suppliers and inventory)
+-- 5. Supplies Table (Link suppliers and )
 CREATE TABLE supplies (
     supplier_id INT,
     product_id INT,
     PRIMARY KEY(supplier_id, product_id),
     FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id),
-    FOREIGN KEY (product_id) REFERENCES inventory(product_id) -- Linking supplies to inventory
+    FOREIGN KEY (product_id) REFERENCES products(product_id) -- Linking supplies to 
 );
 
 -- 6. Orders Table
@@ -68,7 +62,7 @@ CREATE TABLE ordered_products (
     product_id INT,
     quantity INT,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES inventory(product_id) -- Linking orders to inventory
+    FOREIGN KEY (product_id) REFERENCES products(product_id) -- Linking orders to inventory
 );
 
 -- 8. Cart Table (Link cart to inventory)
@@ -79,7 +73,7 @@ CREATE TABLE cart (
     price DECIMAL(10, 2),
     PRIMARY KEY (customer_id, product_id),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
-    FOREIGN KEY (product_id) REFERENCES inventory(product_id) -- Linking cart to inventory
+    FOREIGN KEY (product_id) REFERENCES products(product_id) -- Linking cart to inventory
 );
 
 -- 9. Payment Table
@@ -162,7 +156,7 @@ CREATE TABLE returns (
     return_reason TEXT,
     return_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES inventory(product_id) -- Linking returns to inventory
+    FOREIGN KEY (product_id) REFERENCES products(product_id) -- Linking returns to inventory
 );
 
 -- 17. Anomalies Table (Track issues or anomalies with orders)
